@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 3 - Memory Trigonometri 🎮</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #141E30, #243B55);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #00c6ff, #7efff5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 120px);
+      gap: 15px;
+      justify-content: center;
+    }
+    .card {
+      width: 120px;
+      height: 150px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .card-front {
+      background: #00c6ff;
+      color: black;
+    }
+    .card-back {
+      background: #1f1f1f;
+      transform: rotateY(180deg);
+      border: 2px solid #00c6ff;
+    }
+    #status {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>📐 Game 3: Memory Trigonometri 🎮</h1>
+  <p>Cocokkan kartu yang berpasangan!</p>
+  <div class="game-board" id="gameBoard"></div>
+  <p id="status"></p>
+
+  <script>
+    const cardsData = [
+      {id: 1, content: "sin²θ + cos²θ"},
+      {id: 1, content: "= 1"},
+      {id: 2, content: "tanθ"},
+      {id: 2, content: "= sinθ / cosθ"},
+      {id: 3, content: "1 + tan²θ"},
+      {id: 3, content: "= sec²θ"},
+      {id: 4, content: "1 + cot²θ"},
+      {id: 4, content: "= csc²θ"}
+    ];
+
+    let board = document.getElementById("gameBoard");
+    let status = document.getElementById("status");
+    let selected = [];
+    let lock = false;
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function createBoard() {
+      board.innerHTML = "";
+      shuffle(cardsData).forEach((data, index) => {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.id = data.id;
+        card.innerHTML = `
+          <div class="card-inner">
+            <div class="card-front">?</div>
+            <div class="card-back">${data.content}</div>
+          </div>
+        `;
+        card.addEventListener("click", flipCard);
+        board.appendChild(card);
+      });
+    }
+
+    function flipCard() {
+      if (lock) return;
+      if (this.classList.contains("flipped")) return;
+      this.classList.add("flipped");
+      selected.push(this);
+
+      if (selected.length === 2) {
+        checkMatch();
+      }
+    }
+
+    function checkMatch() {
+      lock = true;
+      let [card1, card2] = selected;
+      if (card1.dataset.id === card2.dataset.id) {
+        status.textContent = "✅ Cocok!";
+        selected = [];
+        lock = false;
+        if (document.querySelectorAll(".card:not(.flipped)").length === 0) {
+          status.textContent = "🎉 Kamu menang! Semua kartu cocok!";
+        }
+      } else {
+        status.textContent = "❌ Salah, coba lagi!";
+        setTimeout(() => {
+          card1.classList.remove("flipped");
+          card2.classList.remove("flipped");
+          selected = [];
+          lock = false;
+        }, 1000);
+      }
+    }
+
+    createBoard();
+  </script>
+</body>
+</html>

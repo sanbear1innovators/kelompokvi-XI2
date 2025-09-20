@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOODIE PEEL 🌱</title>
+    <style>
+        /* === RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #d6706e, #87cae7, #e2cf3c);
+            background-size: 300% 300%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            color: white;
+            text-align: center;
+        }
+
+        .form-toggle {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            color: #85988f;
+        }
+
+        .form {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #000000, #000000);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #131313, #2f3030);
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-toggle">
+            <button class="btn" id="login-btn">Log In</button>
+            <button class="btn" id="signup-btn">Sign Up</button>
+        </div>
+        <form id="login-form" class="form active">
+            <h2>Log In</h2>
+            <input type="email" id="login-email" placeholder="Enter your email" required>
+            <input type="password" id="login-password" placeholder="Enter your password" required>
+            <button type="submit" class="submit-btn" id="login-submit-btn">Log In</button>
+        </form>
+        
+        <form id="signup-form" class="form">
+            <h2>Sign Up</h2>
+            <input type="email" id="signup-email" placeholder="Enter your email" required>
+            <input type="password" id="signup-password" placeholder="Create a password" required>
+            <input type="password" id="signup-password-confirm" placeholder="Confirm your password" required>
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginBtn = document.getElementById("login-btn");
+            const signupBtn = document.getElementById("signup-btn");
+            const loginForm = document.getElementById("login-form");
+            const signupForm = document.getElementById("signup-form");
+
+            // Toggle between login and signup
+            loginBtn.addEventListener("click", () => {
+                loginForm.classList.add("active");
+                signupForm.classList.remove("active");
+            });
+
+            signupBtn.addEventListener("click", () => {
+                signupForm.classList.add("active");
+                loginForm.classList.remove("active");
+            });
+
+            // ✅ Redirect to index.html on login
+            loginForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const email = document.getElementById("login-email").value.trim();
+                const password = document.getElementById("login-password").value.trim();
+                if (email !== "" && password !== "") {
+                    window.location.href = "index.html";
+                } else {
+                    alert("Please fill in all fields!");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

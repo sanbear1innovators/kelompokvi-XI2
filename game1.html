@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Trigonometri Challenge 🎮</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #16222A, #3A6073);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, #00c6ff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+    }
+    .game-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 20px;
+    }
+    .column {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 40%;
+    }
+    .item {
+      background: rgba(255,255,255,0.08);
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .item:hover {
+      background: rgba(0,198,255,0.3);
+    }
+    .item.selected {
+      border: 2px solid #00c6ff;
+    }
+    .item.correct {
+      background: rgba(0,255,100,0.5);
+    }
+    .item.wrong {
+      background: rgba(255,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1>📐 Trigonometri Challenge 🎮</h1>
+  <p>Hubungkan <b>Rumus</b> dengan <b>Jawaban</b> yang tepat!</p>
+  
+  <div class="game-container">
+    <div class="column" id="rumusCol">
+      <h2>RUMUS</h2>
+    </div>
+    <div class="column" id="caraCol">
+      <h2>JAWABAN</h2>
+    </div>
+  </div>
+
+  <p id="score" style="margin-top:30px; font-size:1.2rem;">Score: 0</p>
+
+  <script>
+    const data = [
+      {rumus: "sin(A + B)", cara: "sinAcosB + cosAsinB"},
+      {rumus: "sin(A - B)", cara: " sinAcosB - cosAsinB"},
+      {rumus: "cos(A + B)", cara: " cosAcosB - sinAsinB"},
+      {rumus: "cos(A - B) ", cara: "cosAcosB + sinAsinB"},
+      {rumus: "tan(A + B) ", cara: "(tanA + tanB)/(1 - tanAtanB)"},
+      {rumus: "tan(A - B) ", cara: "(tanA - tanB)/(1 + tanAtanB)"},
+      {rumus: "sin2A ", cara: "2sinAcosA"},
+      {rumus: "cos2A ", cara: "cos²A - sin²A"},
+      {rumus: "cos2A ", cara: "2cos²A - 1"},
+      {rumus: "cos2A ", cara: "1 - 2sin²A"},
+    ];
+
+    let rumusCol = document.getElementById("rumusCol");
+    let caraCol = document.getElementById("caraCol");
+    let scoreEl = document.getElementById("score");
+    let score = 0;
+
+    // Shuffle function
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    let rumusList = shuffle([...data]);
+    let caraList = shuffle([...data]);
+
+    let selectedRumus = null;
+
+    // render rumus
+    rumusList.forEach((item, i) => {
+      let div = document.createElement("div");
+      div.className = "item";
+      div.textContent = item.rumus;
+      div.dataset.index = i;
+      rumusCol.appendChild(div);
+
+      div.addEventListener("click", () => {
+        document.querySelectorAll("#rumusCol .item").forEach(el => el.classList.remove("selected"));
+        div.classList.add("selected");
+        selectedRumus = item;
+      });
+    });
+
+    // render cara baca
+    caraList.forEach((item, i) => {
+      let div = document.createElement("div");
+      div.className = "item";
+      div.textContent = item.cara;
+      div.dataset.index = i;
+      caraCol.appendChild(div);
+
+      div.addEventListener("click", () => {
+        if (selectedRumus) {
+          if (selectedRumus.cara === item.cara) {
+            div.classList.add("correct");
+            let rumusDiv = [...document.querySelectorAll("#rumusCol .item")].find(el => el.textContent === selectedRumus.rumus);
+            rumusDiv.classList.add("correct");
+            score++;
+            scoreEl.textContent = "Score: " + score;
+          } else {
+            div.classList.add("wrong");
+            setTimeout(() => div.classList.remove("wrong"), 700);
+          }
+          selectedRumus = null;
+          document.querySelectorAll("#rumusCol .item").forEach(el => el.classList.remove("selected"));
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Trigonometri Arrange Game 🎮</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #232526, #414345);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, #00c6ff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+    }
+    .question {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .pool, .answer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      min-height: 60px;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .pool {
+      background: rgba(255,255,255,0.08);
+    }
+    .answer {
+      background: rgba(0,198,255,0.08);
+      margin-top: 15px;
+    }
+    .tile {
+      background: rgba(255,255,255,0.15);
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    .tile:hover {
+      background: rgba(0,198,255,0.4);
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #00c6ff;
+      color: black;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00a2d3;
+    }
+    .correct { background: rgba(0,255,100,0.5) !important; }
+    .wrong { background: rgba(255,0,0,0.5) !important; }
+  </style>
+</head>
+<body>
+  <h1>📐 Trigonometri Arrange Game 🎮</h1>
+  <p class="question">Susun potongan berikut agar menjadi rumus yang benar:</p>
+
+  <div class="pool" id="pool"></div>
+  <div class="answer" id="answer"></div>
+  
+  <button onclick="checkAnswer()">✅ Periksa Jawaban</button>
+  <p id="feedback" style="margin-top:20px; font-size:1.1rem;"></p>
+
+  <script>
+    // Data rumus: bisa ditambah lagi
+    const questions = [
+      {
+        rumus: "sin(A + B) = sinAcosB + cosAsinB",
+        pieces: ["sin(A", "+", "B)", "=", "sinAcosB", "+", "cosAsinB"]
+      },
+      {
+        rumus: "cos(2A) = cos²A - sin²A",
+        pieces: ["cos(2A)", "=", "cos²A", "-", "sin²A"]
+      },
+      {
+        rumus: "tan(A + B) = (tanA + tanB)/(1 - tanAtanB)",
+        pieces: ["tan(A", "+", "B)", "=", "(tanA", "+", "tanB)", "/", "(1", "-", "tanAtanB)"]
+      }
+    ];
+
+    let current = 0;
+
+    const pool = document.getElementById("pool");
+    const answer = document.getElementById("answer");
+    const feedback = document.getElementById("feedback");
+
+    function startQuestion() {
+      feedback.textContent = "";
+      answer.innerHTML = "";
+      pool.innerHTML = "";
+      const q = questions[current];
+      let shuffled = [...q.pieces].sort(() => Math.random() - 0.5);
+
+      shuffled.forEach(piece => {
+        let div = document.createElement("div");
+        div.className = "tile";
+        div.textContent = piece;
+        div.onclick = () => moveTile(div);
+        pool.appendChild(div);
+      });
+    }
+
+    function moveTile(tile) {
+      if (tile.parentNode === pool) {
+        answer.appendChild(tile);
+      } else {
+        pool.appendChild(tile);
+      }
+    }
+
+    function checkAnswer() {
+      const userAnswer = [...answer.children].map(div => div.textContent).join(" ");
+      const correct = questions[current].pieces.join(" ");
+      if (userAnswer === correct) {
+        feedback.textContent = "✅ Benar! Rumus: " + questions[current].rumus;
+        feedback.style.color = "lightgreen";
+        [...answer.children].forEach(div => div.classList.add("correct"));
+        setTimeout(() => {
+          current = (current + 1) % questions.length;
+          startQuestion();
+        }, 2000);
+      } else {
+        feedback.textContent = "❌ Coba lagi!";
+        feedback.style.color = "red";
+        [...answer.children].forEach(div => div.classList.add("wrong"));
+        setTimeout(() => {
+          [...answer.children].forEach(div => div.classList.remove("wrong"));
+        }, 800);
+      }
+    }
+
+    startQuestion();
+  </script>
+</body>
+</html>

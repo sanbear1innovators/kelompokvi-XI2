@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>𝗦𝗔𝗡𝗕𝗘𝗔𝗥 𝗜𝗡𝗡𝗢𝗩𝗔𝗧𝗢𝗥𝗦 🌱</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo kita 1.png" rel="icon" class="logo-icon">
+  <link href="assets/img/Logo kita 1.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/cape.css" rel="stylesheet">
+
+  
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <body class="index-page">
+
+    <header id="header" class="header sticky-top">
+  
+    
+  
+      <div class="branding d-flex align-items-center">
+  
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+          <a href="index.html" class="logo d-flex align-items-center me-auto">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+             <img src="assets/Logo kita 1.png" alt="">
+            <h1 class="sitename"><font size="6">Sanbear Tech</font></h1>
+          </a>
+
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="index.html" class="active">Home<br></a></li>
+              <li><a href="index.html">About</a></li>
+              <li class="dropdown"><a href="#departments"><span>Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li class="dropdown"><a href="#"><span>Isu</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                      <li><a href="#departments">Indonesia 🦅</a></li>
+                      <li><a href="#departments">Global 🫂</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="#"><span>Solusi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                      <li><a href="#departments">Reuse 🪴</a></li>
+                      <li><a href="#departments">Recycle 🥬</a></li>
+                    </ul>
+                  </li>
+                  
+                  <li class="dropdown"><a href="#departments"><span><font color="#009900">𝗜𝗺𝗽𝗹𝗲𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻</font></span> </a>
+                    <ul>
+                      <li><a href="#departments"><font color="#4F7942">Recyper ♻️</font></a></li>
+                      <li><a href="#departments"><font color="#004d00">Smart Trash Can 🌍</font></a></li>
+                      <li><a href="#departments"><font color="#004d00">Smart Plastic Trash 🗑️</font></a></li>
+  
+                    </ul>
+  
+                </ul>
+                </li>
+              <li><a href="gameseng.html" class="active">Games</a></li>
+              <li><a href="Shoppingeng.html">Belanja</a></li>
+
+              <li><a href="index.html">Innovators</a></li>
+              <li class="dropdown"><a href="#"><span>Languages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="gameindo.html">Bahasa Indonesia</a></li>
+                  <li><a href="gameseng.html">English</a></li>
+                </ul>
+              </li>
+              <style>
+                /* Popup styling */
+                .popup {
+                    display: none;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #ffffff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2);
+                    z-index: 1000;
+                    width: 90%;
+                    max-width: 500px;
+                    text-align: center;
+                    animation: popOut 0.5s ease-in-out;
+                }
+        
+                .popup p {
+                    margin-bottom: 15px;
+                    font-size: 16px;
+                    color: #1c3b12;
+                }
+        
+                .popup button {
+                    background-color: #327633bc;
+                    color: #fff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+        
+                .popup button:hover {
+                    background-color: #275525;
+                }
+        
+                #popupBackdrop {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.5);
+                    z-index: 999;
+                }
+        
+                @keyframes popOut {
+                    0% {
+                        transform: translate(-50%, -50%) scale(0.5);
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: translate(-50%, -50%) scale(1);
+                        opacity: 1;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <!-- Navigation Bar -->
+            <ul>
+                <li>
+                    <a href="#" onclick="showPopup()">Contact</a>
+                </li>
+            </ul>
+        
+            <!-- Popup Structure -->
+            <div id="popupBackdrop" onclick="closePopup()"></div>
+            <div id="popupMessage" class="popup">
+                <p>Terima kasih sudah mengkontaki kami! Kami harap dapat bertemu lagi nanti 😊
+                  <br>
+                  <b><font color = black><p align=left>E-mail      :</font><font color= grey>@maria.dominika@sma.santaursulajakarta.sch.id</font></p></b>
+                  <b><font color = black><p align=left>Phone number:</font><font color= grey>+62 857-7282-1240</font></p></b>
+        
+                </p>
+                <button onclick="closePopup()">Close</button>
+            </div>
+        
+            <!-- JavaScript -->
+            <script>
+                function showPopup() {
+                    document.getElementById("popupMessage").style.display = "block";
+                    document.getElementById("popupBackdrop").style.display = "block";
+                }
+        
+                function closePopup() {
+                    document.getElementById("popupMessage").style.display = "none";
+                    document.getElementById("popupBackdrop").style.display = "none";
+                }
+            </script>            </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                  </nav>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+  
+          <a class="cta-btn d-none d-sm-block" href="index.html"><b> Gabung kami</b></a>
+  
+        </div>
+  
+      </div>
+  
+    </header>
+  
+
+  <main id="main">
+
+   
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-box">
+              <p><b><Font size=6 color="white"><u> PERMAINAN KAMI  ೀ⋆｡˚</u></Font></b></p>
+              <p>
+               
+                 <p align="justify"> 
+                    Game ini mengajarkan cara mengurangi limbah, mendaur ulang, dan memanfaatkan barang bekas melalui misi seru. Dengan grafis keren, kamu diajak membuat pilihan bijak demi masa depan yang lebih hijau. 🌱
+             </b></font>                 </p>
+                 <br>
+              <br>
+              </p>
+              <div class="text-center">
+                <a href="#" class="more-btn"><b> Learn More</b> <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Why Box -->
+
+          <div class="col-lg-8 d-flex align-items-center">
+            <div class="row gy-4">
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="">🌱</i>
+                  <h4><b><font color="#336600">Green Genius Quiz</font></b></h4>
+                  <p align="justify"><font color=black>
+                    Tunjukkan pengetahuan ekologismu dan buktikan kalau kamu paling jago dalam menyelamatkan bumi!                        </font></p>
+                  <button class="button10"><b><font size=3><a href="assets/indexgame.html" target="_blank"><font color="rgb(3, 5, 3)">
+                    Main Sekarang</font></a></font></b></button>
+
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="">🌿</i>
+                  <h4><b><font color="#336600">Recycle Rush</font></b></h4>
+                  <p align="justify"><font color=black>
+
+                    Kalahkan waktu dan lihat seberapa cepat kamu bisa memilah dan mendaur ulang seperti pro!                                          </font></p>
+                  <button class="button10"><b><font size=3><a href="assets/quiz2.html" target="_blank"><font color="rgb(3, 5, 3)">Main Sekarang</font></a></font></b></button>
+
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="">🥬</i>
+                  <h4><b><font color="#336600">EcoHero Pop Quiz</font></b></h4>
+                  <p align="justify"><font color="black">
+                    Jawab pertanyaan seru dan cepat, lalu jadilah pahlawan terbaik untuk lingkungan!                 </font></p>
+                  <button class="button10"><b><font size=3><a href="assets/quiz3.html" target="_blank"><font color="rgb(3, 5, 3)">Main Sekarang</font></a></font></b></button>
+                </div>
+              </div><!-- End Icon Box -->
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Stats Counter Section ======= -->
+    
+
+        </div>
+
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <b>Lokasi Kami :</b><br>
+            Jl. Pos No.2, Ps. Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110
+            
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <b>Kontak Kami : </b><br>
+               <font size=2>+ 62 857-7282-1240</font><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <b>Email kami :</b>
+            <br>
+             <p><b>Sanbeartech@gmail.com</b></p><br>
+            
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <b>Kontak Kami :</b><br>
+          <div class="social-links d-flex">
+            <a href="https://www.instagram.com/sanbear.inv/?igsh=ZnV0dHkxZXY5bW45" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Sanbear <strong><span>Tech</span></strong>. All Rights Reserved
+      <div class="credits">
+       
+        <b>Dibuat oleh </b> <a href="https://bootstrapmade.com/"><b><u><font color=black>Sanbear Tech Innovators</font></u></b></a>
+      </div> </div> 
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
