@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<htm>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+    <link href="Logo kita 1.png" rel="icon" class="logo-icon">
+    <link href="Logo kita 1.png" rel="apple-touch-icon">
+    <title>𝗦𝗔𝗡𝗕𝗘𝗔𝗥 GAMES 🌱</title>    
+    <style>
+      body{
+        margin:0px;
+        padding:0px;
+        background-image: url(css/bg3.png);
+        height: 100%;
+        width: 100%;
+      }
+      .quiz-app{
+        margin: 8px auto;
+        height: 500px;
+        width: 800px;
+        background-color:#3c7914;
+        border-style: solid;
+        border-width: 18px;
+        border-color:#3c7914;
+        border-radius: 30px;
+      }
+      
+      .time-bar{
+        margin:30px auto;
+        width: 800px;
+        height:30px;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 30px;
+        border-color: #000000;
+        background-color:#000000;
+      }
+      .time-left{
+        width:800px;
+        height:30px;
+        border-style: none;
+        border-radius: 30px;
+        background-color: rgb(198, 220, 90);
+        
+      }
+      .time{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        color:rgb(255, 255, 255);
+        text-align: center;
+      }
+      .q-text{
+        color:#000000;
+        text-align: center;
+        margin-left:20px;
+        margin-top: 30px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+      }
+      #question{
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-weight: 900;
+        font-size: 25px;
+        color:rgb(0, 0, 0);
+        padding:10px 20px 10px 20px;
+
+      }
+      .btn{
+        width: 350px;
+        height: 50px;
+        margin-bottom: 10px;
+        margin-left: 40px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        border-style: solid;
+        border-width: 3px;
+        border-radius: 20px;
+        background-color:transparent;
+        color:rgb(0, 0, 0);
+        border-color: #000000;
+        outline:none;
+                
+      }
+      .btn:hover{
+        background: #dbd876
+        
+      }
+
+      #dots{
+        color:#000000;
+        margin-left: 20px;
+        margin-top: -20px;
+      }
+      .il{
+        color:rgb(0, 0, 0);
+        font-size: 100px;
+        margin-top:130px;
+        margin-left: 110px;
+      }
+      .app{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 35px;
+        color:rgb(0, 0, 0);
+        text-align: center;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+        <div class="quiz-app">
+        <div class="start" id="start" style="display: block;">
+        <h1 class="app">Let's Test Your Knowledge!</h1>
+        </div>
+          <div class="quiz" id="quiz-secreen" style="display:none;">          
+            <div class="time-bar">
+            <div class="time-left" id="timeLeft">
+            
+            </div>
+          </div>
+          <div class="question-no">
+            <h3 class="q-text">Questions<span id="currentQuestion"> 1</span> / <span id="totalQuestions"> 10</span></h3>
+            <h3 id="dots">.................................................................................................................................................................</h3>
+       </div>
+          <div class="qus">
+            <h1 id="question">Who is the first child of the john doe?</h1>
+
+          </div>
+          <div class="choices">
+            <button class="btn" id="opt1">Mark Angel</button>
+            <button class="btn" id="opt2">Mark Angel</button>
+            <button class="btn" id="opt3">Mark Angel</button>
+            <button class="btn" id="opt4">Mark Angel</button>
+          </div>
+        </div>
+        <div class="result" id="resultSecreen" style="display: none;">
+        <h1 class="app"> Score : <span id="score">6</span></h1>
+
+
+        </div>
+        </div>
+    </div>
+    <script> 
+    var currentQuestion=0;
+    var totalScore=0;
+    var cQuestion=document.getElementById('currentQuestion');
+    var totalQuestions=document.getElementById('totalQuestions');
+    var splashSecreen=document.getElementById('start');
+    var quizScreen=document.getElementById('quiz-secreen');
+    var x=0;
+    var resultSecreen=document.getElementById('resultSecreen');
+    var timeLeft=document.getElementById('timeLeft');
+    var score=document.getElementById('score');
+    var question=document.getElementById('question');
+    var opt1=document.getElementById('opt1');
+    var opt2=document.getElementById('opt2');
+    var opt3=document.getElementById('opt3');
+    var opt4=document.getElementById('opt4');
+    var btn=document.getElementsByClassName('btn');
+    var next=document.getElementById('next');
+    var quizQuestions=[
+      {
+        question:"Berikut yang bukan perilaku yang sehat adalah",
+        choice1:"main gadget 24/7",
+        choice2:"Tidak olahraga ",
+        choice3:"Olahraga seminggu sekali saja",
+        choice4:"Rutin berenang",
+        ans:"Rutin berenang",
+      },
+         {
+        question:"Indonesia adalah penghasil sampah plastik terbesar ke-... di dunia",
+        choice1:"1",
+        choice2:"2",
+        choice3:"3",
+        choice4:"4",
+        ans:"2",
+      },
+         {
+        question:"Untuk mengurangi sampah plastik, berikut tindakan yang harus dilakukan kecuali",
+        choice1:"Reduce",
+        choice2:"Recycle",
+        choice3:"Replay",
+        choice4:"Reuse",
+        ans:"Replay",
+      },
+         {
+        question:"Sampah medis termasuk pada jenis sampah",
+        choice1:"B3",
+        choice2:"Organik",
+        choice3:"Anorganik",
+        choice4:"Tidak berbahaya",
+        ans:"B3",
+      },
+         {
+        question:"Apakah kamu siap menjadi bagian dari kami",
+        choice1:"liat nanti dulu ya min",
+        choice2:"siap min",
+        choice3:"ok",
+        choice4:"yah sayangnya belom min",
+        ans:"siap min",
+      }
+    ];
+    function nextQuestion(no){
+    Inter(800);
+    cQuestion.textContent=" "+(no+1);
+    totalQuestions.textContent=" "+quizQuestions.length;
+    console.log("number "+no);
+    question.textContent=quizQuestions[no].question;
+    opt1.textContent=quizQuestions[no].choice1;
+    opt2.textContent=quizQuestions[no].choice2;
+    opt3.textContent=quizQuestions[no].choice3;
+    opt4.textContent=quizQuestions[no].choice4;
+  }
+    var z=setInterval(function(){
+        if(x==1){
+          clearInterval(z);
+          splashSecreen.style.display="none";
+          quizScreen.style.display="block";
+          nextQuestion(currentQuestion);
+        }
+        x++;
+    },2000);
+    for(var i=0;i<btn.length;i++){
+      btn[i].onclick=function(){
+        if(this.textContent==quizQuestions[currentQuestion].ans){
+            totalScore++;
+            if(currentQuestion<4){
+            clearInterval(bar);
+            currentQuestion++;
+            nextQuestion(currentQuestion);
+            console.log(totalScore);
+            }else{
+              endSecreen();
+            }
+        }
+        else{
+          if(currentQuestion<4){
+            currentQuestion++;
+            clearInterval(bar);
+            nextQuestion(currentQuestion);
+            console.log(totalScore);
+            }else{
+              endSecreen();
+            }
+        }
+      }
+    }
+    var bar;
+    function endSecreen(){
+      quizScreen.style.display="none";
+      resultSecreen.style.display="block";
+      score.textContent=totalScore;
+    }
+    function Inter(set) {
+    var statusTime = set;
+    timeLeft.style.width = statusTime + "px";
+    bar = setInterval(function () {
+        if (statusTime <= 0) {
+            clearInterval(bar);
+
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                nextQuestion(currentQuestion);
+            } else {
+                endSecreen();
+            }
+        } else {
+            timeLeft.style.width = statusTime + "px";
+            statusTime -= 30;
+        }
+    }, 1000);
+}
+  next.onclick=function(){
+    if(currentQuestion<4){
+    currentQuestion++;
+    nextQuestion(currentQuestion);
+    }
+    else{
+      endSecreen();
+    }
+   
+  }
+    </script>
+  </body>
+</html>
